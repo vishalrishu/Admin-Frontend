@@ -1,0 +1,39 @@
+<div class="header">
+    <span class="text">Schedule Interview</span>
+</div>
+<div class="row">
+    <label for="participants">Choose Participants:</label>
+
+    <select id="participants" multiple [(ngModel)]="interview.participants">
+        <option *ngFor="let plist of participantList.list" [value]="plist.p_id">
+            {{plist.name}}
+          </option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="description">Interview Description:</label>
+      <input type="text" name="description" id="interview.description" [(ngModel)]="interview.description">
+  </div>
+  <div class="row">
+    <label for="startTime">Start Time(date and time):</label>
+    <input type="datetime-local" id="interview.startts" name="startTime" [(ngModel)]="interview.startts">
+  </div>
+  
+  <div class="row">
+    <label for="endTime">End Time(date and time):</label>
+    <input type="datetime-local" id="interview.endts" name="endTime" [(ngModel)]="interview.endts">
+  </div>
+  <div class="button">
+    <button mat-button (click)="createInterview()">Create</button>
+</div>
+<div class="button">
+    <button mat-button routerLink="/home">List of Interviews</button>
+</div>
+
+<div *ngIf="error">
+    {{error}}
+</div>
+<div *ngIf="success">
+    {{success}}
+</div>
+

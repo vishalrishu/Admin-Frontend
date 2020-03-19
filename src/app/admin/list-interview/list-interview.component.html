@@ -1,0 +1,31 @@
+<div class="header">
+    <span class="text">List of Interviews</span>
+</div>
+<div class="data">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Interview Description</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <!-- <th scope="col">Interview Date</th> -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let interview of interviewList.list; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ interview.description }}
+          </td>
+          <td>{{ interview.startts }}</td>
+          
+          <td>{{ interview.endts }}</td>
+          <td><button mat-button (click)="editInterview(interview)">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<div class="button">
+    <button mat-button (click)="createInterview()">Create Interview</button>
+</div>

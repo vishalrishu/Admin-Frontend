@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: black;
+    height: 4rem;
+    margin: 0;
+}
+.text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    margin: 0.5rem;
+    color: white;
+}
+.data {
+    width: 100%;
+}
+.table {
+    width: 50%;
+    background-color: burlywood;
+}
