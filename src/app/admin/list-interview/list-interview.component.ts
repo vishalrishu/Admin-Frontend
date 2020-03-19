@@ -26,7 +26,7 @@ export class ListInterviewComponent implements OnInit {
   ngOnInit() {
     // let data = [{"p_id":1, "name": "Vishal", "email": "vishal@gmail.com"}];
     // this.participantList.setJson(data);  
-    this.httpCLient.get("http://bd71aa6b.ngrok.io/interviews").subscribe((data) => {
+    this.httpCLient.get("http://localhost:3000/interviews").subscribe((data) => {
         this.interviewList.setJson(data);  
 
       }, (erorr) => {

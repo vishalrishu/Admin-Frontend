@@ -30,7 +30,7 @@ success: string;
       console.log(params.i_id);
       if(params.i_id) {
           this.edit = true;
-      this.httpCLient.get("http://bd71aa6b.ngrok.io/participants/"+params.i_id).subscribe((data) => {
+      this.httpCLient.get("http://localhost:3000/participants/"+params.i_id).subscribe((data) => {
           console.log(data);
           this.participantList.setJson(data);
           this.service.getInterviewDetails().subscribe(data => {
@@ -40,7 +40,7 @@ success: string;
         },(error)=>{});
     }
     });
-    this.httpCLient.get("http://bd71aa6b.ngrok.io/participants").subscribe((data) => {
+    this.httpCLient.get("http://localhost:3000/participants").subscribe((data) => {
         this.participantList.setJson(data);  
 
       }, (error) => {
@@ -49,19 +49,23 @@ success: string;
   }
   createInterview() {
     if(this.interview.endts && this.interview.startts) {
-      this.httpCLient.post("http://bd71aa6b.ngrok.io/interview", {
+      this.httpCLient.post("http://localhost:3000/interview", {
             participants: this.interview.participants,
             i_id: "",
             description: this.interview.description,
             startTS: this.interview.startts,
             endTS: this.interview.endts
         }).subscribe((data)=> {
-            console.log(data);
-            // this.interview = new InterviewModel();
+            if(data['error']) {
+              this.error = data['error'];
+              this.success = "";
+            } else {
             this.success = "Successfully Created";
-            console.log("success");
+            this.error = "";
+            }
       }, (error)=>{
-            this.error = error;
+            this.error = error.error;
+            this.success = "";
       });
   } else {
       this.error = "Please fill all the fields"
